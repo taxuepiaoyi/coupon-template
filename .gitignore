@@ -1,0 +1,30 @@
+# 默认忽略的文件
+/shelf/
+/.idea/workspace.xml
+# 基于编辑器的 HTTP 客户端请求
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# Eclipse IDEA 配置文件
+*.project
+*.classpath
+.settings/
+out/
+
+# 操作系统
+*.DS_Store
+
+# 打包结果
+.gradle/
+bin/
+build/
+
+# 子模块的gitignore文件
+!/.gitignore
+/.metadata/
+/gradle
+/.gradle
+/target/
+/.idea/
