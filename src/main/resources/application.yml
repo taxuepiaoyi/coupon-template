@@ -1,0 +1,14 @@
+# 项目的启动端口
+server:
+  port: 20000
+  error:
+    include-message: always
+
+spring:
+  application:
+    # 定义项目名称
+    name: coupon-template
+
+logging:
+  level:
+    com.broadview.coupon: debug
