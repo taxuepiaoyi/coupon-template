@@ -58,7 +58,7 @@ spring:
         # 命名空间ID，Nacos通过不同的命名空间来区分不同的环境，进行数据隔离，
         # 服务消费时只能消费到对应命名空间下的服务。
         # [注意]需要在nacos-server中创建好namespace，然后把id copy进来
-        namespace: dev
+        namespace: bedd242b-b5a1-4bba-b2e6-927b0bb12564
         # [注意]两个服务如果存在上下游调用关系，必须配置相同的group才能发起访问
         group: myGroup
         # 向注册中心注册服务，默认为true
