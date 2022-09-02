@@ -9,6 +9,7 @@ import com.bruce.coupon.template.domain.TemplateSearchParams;
 import com.bruce.coupon.template.enums.CouponType;
 import com.bruce.coupon.template.service.CouponTemplateService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ import org.springframework.data.domain.Pageable;
  * 优惠券模板类相关操作
  */
 @Slf4j
-@Service
+@DubboService
 public class CouponTemplateServiceImpl implements CouponTemplateService {
 
     @Autowired
