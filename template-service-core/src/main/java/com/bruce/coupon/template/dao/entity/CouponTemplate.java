@@ -2,8 +2,8 @@ package com.bruce.coupon.template.dao.entity;
 
 import com.bruce.coupon.template.dao.conver.CouponTypeConverter;
 import com.bruce.coupon.template.dao.conver.RuleConverter;
-import com.bruce.coupon.template.domain.rule.TemplateRule;
 import com.bruce.coupon.template.enums.CouponType;
+import com.bruce.coupon.template.rule.TemplateRule;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

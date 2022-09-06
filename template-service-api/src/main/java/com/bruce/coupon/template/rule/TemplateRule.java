@@ -1,4 +1,4 @@
-package com.bruce.coupon.template.domain.rule;
+package com.bruce.coupon.template.rule;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

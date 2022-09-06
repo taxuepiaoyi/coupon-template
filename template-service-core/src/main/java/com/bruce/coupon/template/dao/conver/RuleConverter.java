@@ -1,7 +1,7 @@
 package com.bruce.coupon.template.dao.conver;
 
 import com.alibaba.fastjson.JSON;
-import com.bruce.coupon.template.domain.rule.TemplateRule;
+import com.bruce.coupon.template.rule.TemplateRule;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

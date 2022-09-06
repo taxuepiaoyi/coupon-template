@@ -1,6 +1,6 @@
 package com.bruce.coupon.template.domain;
 
-import com.bruce.coupon.template.domain.rule.TemplateRule;
+import com.bruce.coupon.template.rule.TemplateRule;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
