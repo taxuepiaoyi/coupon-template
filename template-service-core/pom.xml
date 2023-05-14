@@ -119,6 +119,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!-- 引入sentinel做服务容错 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
