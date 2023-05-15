@@ -17,13 +17,18 @@ import java.util.Map;
 @Slf4j
 @RestController
 @RefreshScope
-@RequestMapping("coupon-template")
+@RequestMapping("/template")
 public class CouponTemplateController {
 
 
     @GetMapping("/getTemplate")
-    @SentinelResource(value = "getTemplate")
+    @SentinelResource(value = "getTemplate",blockHandler = "getTemplate_block")
     public CouponTemplateInfo getTemplate(@RequestParam("id") Long id){
+        return CouponTemplateInfo.builder().build();
+    }
+
+    public CouponTemplateInfo getTemplate_block(Long id ,BlockException blockException){
+        log.info("getTemplate 接口限流");
         return CouponTemplateInfo.builder().build();
     }
 
