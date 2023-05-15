@@ -1,7 +1,6 @@
-package com.bruce.coupon.template.originParser;
+package com.bruce.coupon.template.sentinel.originParser;
 
 import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.RequestOriginParser;
-import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
