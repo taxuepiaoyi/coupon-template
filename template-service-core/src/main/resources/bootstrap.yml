@@ -23,3 +23,17 @@ spring:
         refresh-enabled: true
         # Nacos的扩展配置项，数字越大优先级越高
         enable-remote-sync-config: true
+  sentinel:
+    datasource:
+      # 数据源的key，可以自由命名
+      geekbang-flow:
+        # 指定当前数据源是nacos
+        nacos:
+          # 设置Nacos的连接地址、命名空间和Group ID
+          server-addr: localhost:8848
+          namespace: dev
+          groupId: SENTINEL_GROUP
+          # 设置Nacos中配置文件的命名规则
+          dataId: ${spring.application.name}-flow-rules
+          # 必填的重要字段，指定当前规则类型是"限流"
+          rule-type: flow

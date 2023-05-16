@@ -1,7 +1,6 @@
 package com.bruce.coupon.template.sentinel.fallback;
 
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
-import io.micrometer.core.annotation.Counted;
 import org.springframework.stereotype.Component;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestParam;
