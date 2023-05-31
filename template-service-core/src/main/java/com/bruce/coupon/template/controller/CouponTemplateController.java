@@ -1,17 +1,15 @@
 package com.bruce.coupon.template.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import com.bruce.coupon.template.sentinel.blockHandler.CouponTemplateBlockHandler;
 import com.bruce.coupon.template.sentinel.fallback.CouponTemplateSentinelFallback;
+import com.bruce.coupon.template.service.CouponTemplateService;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Map;
@@ -21,6 +19,9 @@ import java.util.Map;
 @RefreshScope
 @RequestMapping("/template")
 public class CouponTemplateController {
+
+    @Autowired
+    private CouponTemplateService templateService ;
 
 
     @GetMapping("/getTemplate")
@@ -51,5 +52,15 @@ public class CouponTemplateController {
     public Map<Long, CouponTemplateInfo> getTemplateInBatch(
             @RequestParam("ids") Collection<Long> ids) {
         return Maps.newHashMap() ;
+    }
+
+    /**
+     * 删除优惠券模板
+     * @param templateId
+     * @return
+     */
+    @DeleteMapping("/deleteCouponTemplate")
+    public  Boolean deleteCouponTemplate(@RequestParam("templateId") Long templateId){
+        return templateService.deleteTemplate(templateId);
     }
 }

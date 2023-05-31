@@ -20,7 +20,7 @@ public interface CouponTemplateService {
     CouponTemplateInfo loadTemplateInfo(Long id);
 
     // 让优惠券模板无效
-    void deleteTemplate(Long id);
+    Boolean deleteTemplate(Long id);
 
     // 批量查询
     // Map是模板ID，key是模板详情
