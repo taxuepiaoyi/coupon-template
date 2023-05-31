@@ -5,7 +5,6 @@ import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import com.bruce.coupon.template.sentinel.blockHandler.CouponTemplateBlockHandler;
 import com.bruce.coupon.template.sentinel.fallback.CouponTemplateSentinelFallback;
 import com.bruce.coupon.template.service.CouponTemplateService;
-import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -23,7 +22,27 @@ public class CouponTemplateController {
     @Autowired
     private CouponTemplateService templateService ;
 
+    /**
+     * 新增优惠券
+     * @param request
+     * @return
+     */
+    @PostMapping("/createTemplate")
+    public CouponTemplateInfo createTemplate(@RequestBody CouponTemplateInfo request){
+        if(request == null){
+            log.info("createTemplate request is null");
+            return null ;
+        }
+        return templateService.createTemplate(request) ;
+    }
 
+
+    /**
+     * 根据templateId获取优惠券信息
+     * @param id
+     * @return
+     * @throws Exception
+     */
     @GetMapping("/getTemplate")
     @SentinelResource(value = "getTemplate",blockHandlerClass = CouponTemplateBlockHandler.class,fallbackClass = CouponTemplateSentinelFallback.class)
     public CouponTemplateInfo getTemplate(@RequestParam("id") Long id) throws Exception{
@@ -44,14 +63,19 @@ public class CouponTemplateController {
             Thread.sleep(1000);
         }
 
-        return CouponTemplateInfo.builder().build();
+        return templateService.loadTemplateInfo(id);
     }
 
+    /**
+     * 批量获取优惠券信息
+     * @param ids
+     * @return
+     */
     @GetMapping("/getBatch")
     @SentinelResource(value = "getTemplateInBatch", blockHandlerClass = CouponTemplateBlockHandler.class)
     public Map<Long, CouponTemplateInfo> getTemplateInBatch(
             @RequestParam("ids") Collection<Long> ids) {
-        return Maps.newHashMap() ;
+        return templateService.getTemplateInfoMap(ids) ;
     }
 
     /**

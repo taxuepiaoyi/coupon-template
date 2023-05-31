@@ -1,5 +1,6 @@
 package com.bruce.coupon.template.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.bruce.coupon.template.converter.CouponTemplateConverter;
 import com.bruce.coupon.template.dao.CouponTemplateDao;
 import com.bruce.coupon.template.dao.entity.CouponTemplate;
@@ -8,6 +9,7 @@ import com.bruce.coupon.template.domain.PagedCouponTemplateInfo;
 import com.bruce.coupon.template.domain.TemplateSearchParams;
 import com.bruce.coupon.template.enums.CouponType;
 import com.bruce.coupon.template.service.CouponTemplateService;
+import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.BeanUtils;
@@ -25,6 +27,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.util.CollectionUtils;
 
 /**
  * 优惠券模板类相关操作
@@ -148,8 +151,17 @@ public class CouponTemplateServiceImpl implements CouponTemplateService {
      */
     @Override
     public Map<Long, CouponTemplateInfo> getTemplateInfoMap(Collection<Long> ids) {
+        if(CollectionUtils.isEmpty(ids)){
+            log.info("getTemplateInfoMap....ids is empty.....");
+            return null ;
+        }
 
         List<CouponTemplate> templates = templateDao.findAllById(ids);
+
+        if(CollectionUtils.isEmpty(templates)){
+            log.info("getTemplateInfoMap....templates is empty.....ids:{}" , JSONObject.toJSONString(ids));
+            return null ;
+        }
 
         return templates.stream()
                 .map(CouponTemplateConverter::convertToTemplateInfo)
