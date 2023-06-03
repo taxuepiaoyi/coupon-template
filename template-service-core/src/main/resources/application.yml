@@ -9,6 +9,9 @@ spring:
     # 定义项目名称
     name: coupon-template
   cloud:
+    alibaba:
+      seata:
+        tx-service-group: seata-server-group
     nacos:
       discovery:
         # 可以配置多个，逗号分隔
@@ -43,6 +46,20 @@ spring:
         watch:
           enabled: true
         watch-delay: 30000
+
+seata:
+  application-id: coupon-template
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: localhost:8848
+      namespace: dev
+      group: myGroup
+      cluster: default
+  service:
+    vgroup-mapping:
+      seata-server-group: default
 
 logging:
   level:
