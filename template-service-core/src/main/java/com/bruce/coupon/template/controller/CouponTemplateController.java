@@ -5,6 +5,7 @@ import com.bruce.coupon.template.domain.CouponTemplateInfo;
 import com.bruce.coupon.template.sentinel.blockHandler.CouponTemplateBlockHandler;
 import com.bruce.coupon.template.sentinel.fallback.CouponTemplateSentinelFallback;
 import com.bruce.coupon.template.service.CouponTemplateService;
+import com.bruce.coupon.template.service.CouponTemplateServiceTCC;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -21,6 +22,9 @@ public class CouponTemplateController {
 
     @Autowired
     private CouponTemplateService templateService ;
+
+    @Autowired
+    private CouponTemplateServiceTCC templateServiceTCC ;
 
     /**
      * 新增优惠券
@@ -86,5 +90,15 @@ public class CouponTemplateController {
     @DeleteMapping("/deleteCouponTemplate")
     public  Boolean deleteCouponTemplate(@RequestParam("templateId") Long templateId){
         return templateService.deleteTemplate(templateId);
+    }
+
+    /**
+     * 使用TCC模式删除优惠券模板
+     * @param templateId
+     * @return
+     */
+    @DeleteMapping("/deleteCouponTemplateTCC")
+    public  Boolean deleteCouponTemplateTCC(@RequestParam("templateId") Long templateId){
+        return templateServiceTCC.deleteCouponTemplateById(templateId) ;
     }
 }

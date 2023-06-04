@@ -59,4 +59,7 @@ public class CouponTemplate implements Serializable{
     @Column(name = "rule", nullable = false)
     @Convert(converter = RuleConverter.class)
     private TemplateRule rule;
+
+    @Column(name = "locked", nullable = false)
+    private Boolean locked;
 }
